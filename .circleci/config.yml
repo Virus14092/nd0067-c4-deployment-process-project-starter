@@ -29,11 +29,7 @@ jobs:
           name: backend Install
           command: |
             npm run api:install
-      #  Lint the frontend
-      - run:
-          name: Front-End Lint
-          command: |
-            npm run frontend:lint
+
       # Build the frontend app
       - run:
           name: Front-End Build
@@ -59,4 +55,9 @@ jobs:
           name: Deploy App
           # Install, build, deploy in both apps
           command: |
+<<<<<<< HEAD
             npm run deploy
+=======
+           npm run deploy
+            
+>>>>>>> 8f4ad252c3d60b78eb6dc38dc35eeafc53993303
