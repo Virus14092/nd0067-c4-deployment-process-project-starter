@@ -29,11 +29,7 @@ jobs:
           name: backend Install
           command: |
             npm run api:install
-      #  Lint the frontend
-      - run:
-          name: Front-End Lint
-          command: |
-            npm run frontend:lint
+
       # Build the frontend app
       - run:
           name: Front-End Build
@@ -61,18 +57,3 @@ jobs:
           command: |
            npm run deploy
             
-workflows:
-  udagram:
-    jobs:
-      - build
-      - hold:
-          filters:
-            branches:
-              only:
-                - master
-          type: approval
-          requires:
-            - build
-      - deploy:
-          requires:
-            - hold
