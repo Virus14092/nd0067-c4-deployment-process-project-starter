@@ -29,22 +29,13 @@ jobs:
           name: backend Install
           command: |
             npm run api:install
-
-
-
-  # deploy step will run only after manual approval
-  deploy:
-    docker:
-      - image: "cimg/base:stable"
-      # more setup needed for aws, node, elastic beanstalk
-    steps:
-      - node/install:
-          node-version: "14.15"
-      - eb/setup
-      - aws-cli/setup
-      - checkout
+      #  Deploy back-end
       - run:
-          name: Deploy App
-          # Install, build, deploy in both apps
+          name: backend deploy
+          command: |
+            npm run api:deploy
+      #  deploy front-end and back-end
+      - run:
+          name: frontend and backend deploy
           command: |
             npm run deploy
