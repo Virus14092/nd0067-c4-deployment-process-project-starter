@@ -43,4 +43,11 @@ jobs:
       - run:
           name: set env
           command: |
-            eb setenv key=value
+            eb setenv POSTGRES_USERNAME=postgres
+            eb setenv POSTGRES_PASSWORD=myPassword
+            eb setenv POSTGRES_HOST=postgres.czbo2ooqfamw.us-east-1.rds.amazonaws.com
+            eb setenv POSTGRES_DB=postgres
+            eb setenv AWS_BUCKET=arn:aws:s3:::vegacontactsbucket141092
+            eb setenv AWS_REGION=us-east-1
+            eb setenv AWS_PROFILE=default
+            eb setenv JWT_SECRET=mysecretstring
