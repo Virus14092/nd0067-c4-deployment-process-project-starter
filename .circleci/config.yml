@@ -33,9 +33,14 @@ jobs:
       - run:
           name: backend deploy
           command: |
-            npm run api:deploy
+            npm run api:install
       #  deploy front-end and back-end
       - run:
           name: frontend and backend deploy
           command: |
-            npm run deploy
+            npm run api:install
+      #  set environmental values to elasticbeanstalk
+      - run:
+          name: set env
+          command: |
+            npm run api:install
