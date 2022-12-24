@@ -16,6 +16,9 @@ jobs:
           node-version: "14.15"
       - checkout
       # Use root level package.json to install dependencies in the frontend app
+        filters:
+        branches:
+          only: /server\/.*/
       - run:
           name: Install Front-End Dependencies
           command: |
@@ -43,11 +46,11 @@ jobs:
       - run:
           name: set env
           command: |
-            eb setenv POSTGRES_USERNAME=postgres
-            eb setenv POSTGRES_PASSWORD=myPassword
-            eb setenv POSTGRES_HOST=postgres.czbo2ooqfamw.us-east-1.rds.amazonaws.com
-            eb setenv POSTGRES_DB=postgres
-            eb setenv AWS_BUCKET=arn:aws:s3:::vegacontactsbucket141092
-            eb setenv AWS_REGION=us-east-1
-            eb setenv AWS_PROFILE=default
-            eb setenv JWT_SECRET=mysecretstring
+            eb setenv POSTGRES_USERNAME=$POSTGRES_USERNAME
+            eb setenv POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+            eb setenv POSTGRES_HOST=$POSTGRES_HOST
+            eb setenv POSTGRES_DB=$POSTGRES_DB
+            eb setenv AWS_BUCKET=$AWS_BUCKET
+            eb setenv AWS_REGION=$AWS_REGION
+            eb setenv AWS_PROFILE=$AWS_PROFILE
+            eb setenv JWT_SECRET=$JWT_SECRET
